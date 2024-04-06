@@ -1,0 +1,43 @@
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\CycleCountSystem (CSS).dll.config
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\CycleCountSystem (CSS).dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\CycleCountSystem (CSS).pdb
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\Antlr3.Runtime.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\EntityFramework.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\EntityFramework.SqlServer.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\EPPlus.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\EPPlus.Interfaces.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\EPPlus.System.Drawing.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\MoreLinq.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\Newtonsoft.Json.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\Rotativa.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.ComponentModel.Annotations.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.Helpers.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.Mvc.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.Optimization.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.Razor.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.WebPages.Deployment.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.WebPages.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.WebPages.Razor.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\WebGrease.dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\EntityFramework.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\EntityFramework.SqlServer.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\EPPlus.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\MoreLinq.pdb
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\MoreLinq.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.Helpers.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.Mvc.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.Optimization.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.Razor.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.WebPages.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.WebPages.Deployment.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\System.Web.WebPages.Razor.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\Newtonsoft.Json.xml
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\bin\Antlr3.Runtime.pdb
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\obj\Release\CycleCountSystem (CSS).csproj.AssemblyReference.cache
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\obj\Release\CycleCountSystem (CSS).csproj.CoreCompileInputs.cache
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\obj\Release\CycleCountSystem (CSS).csproj.CopyComplete
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\obj\Release\CycleCountSystem (CSS).dll
+C:\Users\IlhamMuhamma\source\repos\CycleCountSystem (CSS)\CycleCountSystem (CSS)\CycleCountSystem (CSS)\obj\Release\CycleCountSystem (CSS).pdb

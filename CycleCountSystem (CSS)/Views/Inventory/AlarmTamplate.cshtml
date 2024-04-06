@@ -1,0 +1,22 @@
+﻿@model CycleCountSystem__CSS_.Models.CombineViewModel
+
+<body>
+    <p><b style="text-align:left">Dear Sir/Madam,</b></p>
+    <p>
+    <p style="text-align:left;">
+        <span style="background-color: yellow; color: black;"> JADWAL CYCLE COUNT ITR TELAH TIBA!!</span>
+    </p>
+
+    <div id="krangka" class="container" style="border-radius: 6px; position: center; margin: auto; justify-content:center;">
+        <p>
+            Pada Tanggal <span style="background-color: yellow; color: black;">@Html.DisplayFor(model => model.DateCount)</span> waktunya lakukan cycle count pada ITR<span style="background-color: yellow; color: black;"> kategori @Html.DisplayFor(model => model.SelectedKategori). </span> Segera hentikan transaksi barang dan lakukan cycle count.
+        </p>
+
+        <Right>
+            <div class="container">
+                <p style="font-weight: bold;">Thanks and Best Regards</p>
+                <p style="font-weight: bold;">Cycle Count Admin</p>
+            </div>
+        </Right>
+    </div>
+</body>

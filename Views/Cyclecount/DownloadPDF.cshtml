@@ -1,0 +1,228 @@
+﻿@model CycleCountSystem__CSS_.Models.CombineViewModel
+
+@{
+    Layout = "";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        #header {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+            #header img {
+                max-width: 150px;
+                margin-bottom: 10px;
+            }
+
+            #header h1 {
+                font-size: 24px;
+                color: #333;
+                margin: 0;
+                display: inline-block;
+                vertical-align: middle;
+                color: white;
+            }
+
+            #header p {
+                font-size: 16px;
+                color: #333;
+                margin: 0;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            #header .logo-container {
+                display: inline-block;
+                vertical-align: middle;
+                float: right;
+            }
+        /* CSS untuk styling tabel */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* CSS untuk styling halaman */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header-table {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* CSS untuk membuat header tetap terlihat */
+        thead {
+            position: sticky;
+            top: 0;
+            background-color: #84B6A7;
+            color: aliceblue;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header">
+        <div class="logo-container">
+            <img src="~/theme/img/asset/Infineon-logo.png" alt="logo" style="width: 100px; height: auto;" />
+        </div>
+        <h1>LOGISTIK BAT LOG</h1></br>
+        @*<p>Report Cycle Count Data</p>*@
+    </div>
+    <!-- Main Content -->
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 text-center">
+            <h1 class="h3 mb-0 text-gray-800">Report Cycle Count Data</h1>
+        </div>
+
+        <!--CODE TABEL-->
+        <!-- CODE TABEL -->
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead class="hide-on-scroll">
+                    <tr>
+                        <th>NO</th>
+                        <th>Date Count</th>
+                        <th>Id Material</th>
+                        <th>Batch_number</th>
+                        <th>Bin</th>
+                        <th>ITR</th>
+                        <th>Data Sistem</th>
+                        <th>Data Aktual</th>
+                        <th>Persentase</th>
+                        <th>Selisih QTY</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int counter = 1; // Inisialisasi counter untuk nomor urutan
+                    }
+
+                    @foreach (var item in Model.CycleCounts)
+                    {
+                        var inventoryItem = Model.Inventories.FirstOrDefault(inv =>
+                            inv.Id_material == item.Id_Material &&
+                            inv.Batch_number == item.Batch_no &&
+                            inv.Bin == item.bin);
+
+                        <tr style="border: 1px solid #ddd; text-align: center;">
+                            <td style="border: 1px solid #ddd;">@counter</td>
+                            <td style="border: 1px solid #ddd;">@item.Date_count</td>
+                            <td style="border: 1px solid #ddd;">@item.Id_Material</td>
+                            <td style="border: 1px solid #ddd;">@item.Batch_no</td>
+                            <td style="border: 1px solid #ddd;">@item.bin</td>
+                            <td style="border: 1px solid #ddd;">@(inventoryItem != null ? inventoryItem.ITR.ToString() : "N/A")</td>
+                            <td style="border: 1px solid #ddd;">@(inventoryItem != null ? inventoryItem.Qty.ToString() : "N/A")</td>
+                            <td style="border: 1px solid #ddd;">@item.Data_aktual</td>
+                            <td style="border: 1px solid #ddd;">@item.Persentase%</td>
+                            <td style="border: 1px solid #ddd;">@item.SelisihQty</td>
+                            <td style="border: 1px solid #ddd;" class="text-center">
+                                @{
+                                    decimal persentase = 0m;
+                                    decimal.TryParse(item.Persentase, out persentase);
+                                }
+
+                                @if (persentase == 100.00m)
+                                {
+                                    <button style="#FFF275" class="btn btn-success">Benar</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-danger">Salah</button>
+                                }
+                            </td>
+                        </tr>
+
+                        counter++; // Increment counter setiap kali iterasi
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    <!-- /.container-fluid -->
+    <!-- End of Main Content -->
+    <!-- Footer -->
+    </br>
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2020</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+    </div>
+
+    <script>
+        function hideTableHeader() {
+            var table = document.getElementById("dataTable");
+            var header = table.getElementsByTagName("thead")[0];
+            var body = table.getElementsByTagName("tbody")[0];
+            var rows = body.rows;
+            var scrollPos = table.scrollTop;
+
+            if (scrollPos > 0) {
+                header.classList.add("hide-on-scroll");
+            } else {
+                header.classList.remove("hide-on-scroll");
+            }
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var cols = row.getElementsByTagName("td");
+
+                for (var j = 0; j < cols.length; j++) {
+                    var col = cols[j];
+                    col.style.borderTop = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

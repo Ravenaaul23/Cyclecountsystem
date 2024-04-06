@@ -1,0 +1,224 @@
+﻿@model CycleCountSystem__CSS_.Models.CombineViewModel
+
+@{
+    Layout = "";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cycle Count</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Theme/css/sb-admin-2.css" rel="stylesheet" />
+
+    <!-- Custom styles for this page -->
+    <link href="~/Theme/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style>
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-top: 0;
+        }
+        /* CSS untuk membuat header tetap terlihat */
+        thead {
+            position: sticky;
+            top: 0;
+            background-color: #84B6A7;
+            color: aliceblue;
+        }
+
+        .sticky-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #ffffff; /* Ubah sesuai kebutuhan Anda */
+            text-align: center; /* Mengatur konten agar berada di tengah */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1 class="title">
+            LOGISTIK BAT LOG <br>
+            Report Cycle Count Data
+        </h1>
+        <h2 class="subtitle">Calculation result information below</h2>
+        <!-- Divider -->
+        <hr>
+    </div>
+    <!-- Main Content -->
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead style="background-color: #84B6A7">
+                        <tr style="color:aliceblue">
+                            <th>NO</th>
+                            <th>Date Count</th>
+                            <th>Id Material</th>
+                            <th>Batch_number</th>
+                            <th>Bin</th>
+                            <th>ITR</th>
+                            <th>Data Sistem</th>
+                            <th>Data Aktual</th>
+                            <th>Persentase</th>
+                            <th>Selisih QTY</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tfoot style="background-color: #84B6A7">
+                        <tr style="color:aliceblue">
+                            <th>NO</th>
+                            <th>Date Count</th>
+                            <th>Id Material</th>
+                            <th>Batch_number</th>
+                            <th>Bin</th>
+                            <th>ITR</th>
+                            <th>Data Sistem</th>
+                            <th>Data Aktual</th>
+                            <th>Persentase</th>
+                            <th>Selisih QTY</th>
+                            <th>Result</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{
+                            int counter = 1; // Inisialisasi counter untuk nomor urutan
+                        }
+
+                        @foreach (var item in Model.CycleCounts)
+                        {
+                            var inventoryItem = Model.Inventories.FirstOrDefault(inv =>
+                                inv.Id_material == item.Id_Material &&
+                                inv.Batch_number == item.Batch_no &&
+                                inv.Bin == item.bin);
+
+                            <tr style="border: 1px solid #ddd; text-align: center;">
+                                <td style="border: 1px solid #ddd;">@counter</td>
+                                <td style="border: 1px solid #ddd;">@item.Date_count</td>
+                                <td style="border: 1px solid #ddd;">@item.Id_Material</td>
+                                <td style="border: 1px solid #ddd;">@item.Batch_no</td>
+                                <td style="border: 1px solid #ddd;">@item.bin</td>
+                                <td style="border: 1px solid #ddd;">@(inventoryItem != null ? inventoryItem.ITR.ToString() : "N/A")</td>
+                                <td style="border: 1px solid #ddd;">@(inventoryItem != null ? inventoryItem.Qty.ToString() : "N/A")</td>
+                                <td style="border: 1px solid #ddd;">@item.Data_aktual</td>
+                                <td style="border: 1px solid #ddd;">@item.Persentase%</td>
+                                <td style="border: 1px solid #ddd;">@item.SelisihQty</td>
+                                <td style="border: 1px solid #ddd;" class="text-center">
+                                    @{
+                                        decimal persentase = 0m;
+                                        decimal.TryParse(item.Persentase, out persentase);
+                                    }
+
+                                    @if (persentase == 100.00m)
+                                    {
+                                        <button style="background-color: #0094ff" class="btn btn-success">Benar</button>
+                                    }
+                                    else
+                                    {
+                                        <button style="background-color: #ff0000" class="btn btn-danger">Salah</button>
+                                    }
+                                </td>
+                            </tr>
+
+                            counter++; // Increment counter setiap kali iterasi
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+    <!-- End of Main Content -->
+    <!-- Footer -->
+    <br />
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Logistics Department 2023</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+    <script>
+        function hideTableHeader() {
+            var table = document.getElementById("dataTable");
+            var header = table.getElementsByTagName("thead")[0];
+            var body = table.getElementsByTagName("tbody")[0];
+            var rows = body.rows;
+            var scrollPos = table.scrollTop;
+
+            if (scrollPos > 0) {
+                header.classList.add("hide-on-scroll");
+            } else {
+                header.classList.remove("hide-on-scroll");
+            }
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var cols = row.getElementsByTagName("td");
+
+                for (var j = 0; j < cols.length; j++) {
+                    var col = cols[j];
+                    col.style.borderTop = "none";
+                }
+            }
+        }
+    </script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Theme/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Theme/js/sb-admin-2.min.js"></script>
+
+    <!-- date-range-picker -->
+    <script src="~/Theme/Plugins/daterangepicker/daterangepicker.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/Theme/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Theme/js/demo/chart-area-demo.js"></script>
+    <script src="~/Theme/js/demo/chart-pie-demo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model CycleCountSystem__CSS_.Models.CombineViewModel
+
+<body>
+    <p><b style="text-align:left">Dear Sir/Madam,</b></p>
+    <p>
+    <p style="text-align:left;">
+        <span style="background-color: yellow; color: black;"> Berikut merupakan hasil kalkulasi yang failed pada cycle count kali ini</span>
+    </p>
+
+    <div id="krangka" class="container" style="border-radius: 6px; position: center; margin: auto; justify-content:center;">
+        <p>
+            Pada Tanggal <span style="background-color: yellow; color: black;">@Html.DisplayFor(model => model.DateCount)</span> cycle count dilakukan dengan Id Material = <span style="background-color: yellow; color: black;">@Model.LastCalculationId</span>
+            dengan  Batch Number = <span style="background-color: yellow; color: black;">@Model.LastCalculationBatch</span> dan    BIN = <span style="background-color: yellow; color: black;">@Model.LastCalculationBin</span>, berikut hasilnya:
+        </p>
+
+        <table style="width: 500px; border-collapse: collapse; outline: none;" border="1">
+            <tr>
+                <th align="center" style=" width: 80px; background-color: mediumseagreen">Keterangan</th>
+                <th align="center" style="width: 100px;background-color:mediumseagreen;">
+                    Hasil
+                </th>
+            </tr>
+            <tr>
+                <th align="left" style="width: 80px; ">Persentase</th>
+                <td style="width: 100px;background-color:white;">
+                    @Html.DisplayFor(model => model.LastCalculationPercent, "{0}%", new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+            <tr>
+                <th align="left" style=" width: 80px;">Data Sistem </th>
+                <td style="width: 100px;background-color:white;">
+                    @Html.DisplayFor(model => model.LastCalculationInventoryQty, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+
+            <tr>
+                <th align="left" style="width: 80px; ">Data Aktual </th>
+                <td style="width: 100px;background-color:white;">
+                    @Html.DisplayFor(model => model.DataAktualString, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+            <tr>
+                <th align="left" style=" width: 80px;">Selisih Kalkulasi</th>
+                <td style="width: 100px;background-color:white;">
+                    @Html.DisplayFor(model => model.SelisihQty, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+        </table>
+        <p>
+            Dengan hasil ini, mohon untuk segera ditindak lanjuti
+        </p>
+        <Right>
+            <div class="container">
+                <p style="font-weight: bold;">Thanks and Best Regards</p>
+                <p style="font-weight: bold;">Cycle Count Team</p>
+            </div>
+        </Right>
+    </div>
+</body>

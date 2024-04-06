@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CyclecountsystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TB_Akun">
+          <Key>
+            <PropertyRef Name="Id_akun" />
+          </Key>
+          <Property Name="Id_akun" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="windows_account" Type="varchar(max)" />
+          <Property Name="Id_role" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Cyclecount">
+          <Key>
+            <PropertyRef Name="Id_Cyclecount" />
+          </Key>
+          <Property Name="Id_Cyclecount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Material" Type="varchar(max)" />
+          <Property Name="Batch_no" Type="varchar(max)" />
+          <Property Name="bin" Type="varchar(max)" />
+          <Property Name="Data_aktual" Type="varchar(max)" />
+          <Property Name="SelisihQty" Type="varchar(max)" />
+          <Property Name="Persentase" Type="varchar(max)" />
+          <Property Name="Date_count" Type="datetime" />
+          <Property Name="Id_akun" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Email">
+          <Key>
+            <PropertyRef Name="Id_email" />
+          </Key>
+          <Property Name="Id_email" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TB_Inventory">
+          <Key>
+            <PropertyRef Name="Id_Inventory" />
+          </Key>
+          <Property Name="Id_Inventory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_material" Type="varchar(max)" />
+          <Property Name="Mat_description" Type="varchar(max)" />
+          <Property Name="Batch_number" Type="varchar(max)" />
+          <Property Name="Bin" Type="varchar(max)" />
+          <Property Name="Qty" Type="varchar(max)" />
+          <Property Name="Calculate" Type="bit" />
+          <Property Name="Id_akun" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Role">
+          <Key>
+            <PropertyRef Name="Id_role" />
+          </Key>
+          <Property Name="Id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_TB_Akun_TB_Role">
+          <End Role="TB_Role" Type="Self.TB_Role" Multiplicity="0..1" />
+          <End Role="TB_Akun" Type="Self.TB_Akun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Role">
+              <PropertyRef Name="Id_role" />
+            </Principal>
+            <Dependent Role="TB_Akun">
+              <PropertyRef Name="Id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_Cyclecount_TB_Akun">
+          <End Role="TB_Akun" Type="Self.TB_Akun" Multiplicity="0..1" />
+          <End Role="TB_Cyclecount" Type="Self.TB_Cyclecount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Akun">
+              <PropertyRef Name="Id_akun" />
+            </Principal>
+            <Dependent Role="TB_Cyclecount">
+              <PropertyRef Name="Id_akun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_Inventory_TB_Akun">
+          <End Role="TB_Akun" Type="Self.TB_Akun" Multiplicity="0..1" />
+          <End Role="TB_Inventory" Type="Self.TB_Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Akun">
+              <PropertyRef Name="Id_akun" />
+            </Principal>
+            <Dependent Role="TB_Inventory">
+              <PropertyRef Name="Id_akun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CyclecountsystemModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Akun" EntityType="Self.TB_Akun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Cyclecount" EntityType="Self.TB_Cyclecount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Email" EntityType="Self.TB_Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Inventory" EntityType="Self.TB_Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Role" EntityType="Self.TB_Role" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TB_Akun_TB_Role" Association="Self.FK_TB_Akun_TB_Role">
+            <End Role="TB_Role" EntitySet="TB_Role" />
+            <End Role="TB_Akun" EntitySet="TB_Akun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_Cyclecount_TB_Akun" Association="Self.FK_TB_Cyclecount_TB_Akun">
+            <End Role="TB_Akun" EntitySet="TB_Akun" />
+            <End Role="TB_Cyclecount" EntitySet="TB_Cyclecount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_Inventory_TB_Akun" Association="Self.FK_TB_Inventory_TB_Akun">
+            <End Role="TB_Akun" EntitySet="TB_Akun" />
+            <End Role="TB_Inventory" EntitySet="TB_Inventory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CyclecountsystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB_Akun">
+          <Key>
+            <PropertyRef Name="Id_akun" />
+          </Key>
+          <Property Name="Id_akun" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="windows_account" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Id_role" Type="Int32" />
+          <NavigationProperty Name="TB_Role" Relationship="Self.FK_TB_Akun_TB_Role" FromRole="TB_Akun" ToRole="TB_Role" />
+          <NavigationProperty Name="TB_Cyclecount" Relationship="Self.FK_TB_Cyclecount_TB_Akun" FromRole="TB_Akun" ToRole="TB_Cyclecount" />
+          <NavigationProperty Name="TB_Inventory" Relationship="Self.FK_TB_Inventory_TB_Akun" FromRole="TB_Akun" ToRole="TB_Inventory" />
+        </EntityType>
+        <EntityType Name="TB_Cyclecount">
+          <Key>
+            <PropertyRef Name="Id_Cyclecount" />
+          </Key>
+          <Property Name="Id_Cyclecount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Material" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Batch_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Data_aktual" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SelisihQty" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Persentase" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date_count" Type="DateTime" Precision="3" />
+          <Property Name="Id_akun" Type="Int32" />
+          <NavigationProperty Name="TB_Akun" Relationship="Self.FK_TB_Cyclecount_TB_Akun" FromRole="TB_Cyclecount" ToRole="TB_Akun" />
+        </EntityType>
+        <EntityType Name="TB_Email">
+          <Key>
+            <PropertyRef Name="Id_email" />
+          </Key>
+          <Property Name="Id_email" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_Inventory">
+          <Key>
+            <PropertyRef Name="Id_Inventory" />
+          </Key>
+          <Property Name="Id_Inventory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_material" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Mat_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Batch_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Bin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Calculate" Type="Boolean" />
+          <Property Name="Id_akun" Type="Int32" />
+          <NavigationProperty Name="TB_Akun" Relationship="Self.FK_TB_Inventory_TB_Akun" FromRole="TB_Inventory" ToRole="TB_Akun" />
+        </EntityType>
+        <EntityType Name="TB_Role">
+          <Key>
+            <PropertyRef Name="Id_role" />
+          </Key>
+          <Property Name="Id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Akun" Relationship="Self.FK_TB_Akun_TB_Role" FromRole="TB_Role" ToRole="TB_Akun" />
+        </EntityType>
+        <Association Name="FK_TB_Akun_TB_Role">
+          <End Role="TB_Role" Type="Self.TB_Role" Multiplicity="0..1" />
+          <End Role="TB_Akun" Type="Self.TB_Akun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Role">
+              <PropertyRef Name="Id_role" />
+            </Principal>
+            <Dependent Role="TB_Akun">
+              <PropertyRef Name="Id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_Cyclecount_TB_Akun">
+          <End Role="TB_Akun" Type="Self.TB_Akun" Multiplicity="0..1" />
+          <End Role="TB_Cyclecount" Type="Self.TB_Cyclecount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Akun">
+              <PropertyRef Name="Id_akun" />
+            </Principal>
+            <Dependent Role="TB_Cyclecount">
+              <PropertyRef Name="Id_akun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_Inventory_TB_Akun">
+          <End Role="TB_Akun" Type="Self.TB_Akun" Multiplicity="0..1" />
+          <End Role="TB_Inventory" Type="Self.TB_Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Akun">
+              <PropertyRef Name="Id_akun" />
+            </Principal>
+            <Dependent Role="TB_Inventory">
+              <PropertyRef Name="Id_akun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CyclecountsystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TB_Akun" EntityType="Self.TB_Akun" />
+          <EntitySet Name="TB_Cyclecount" EntityType="Self.TB_Cyclecount" />
+          <EntitySet Name="TB_Email" EntityType="Self.TB_Email" />
+          <EntitySet Name="TB_Inventory" EntityType="Self.TB_Inventory" />
+          <EntitySet Name="TB_Role" EntityType="Self.TB_Role" />
+          <AssociationSet Name="FK_TB_Akun_TB_Role" Association="Self.FK_TB_Akun_TB_Role">
+            <End Role="TB_Role" EntitySet="TB_Role" />
+            <End Role="TB_Akun" EntitySet="TB_Akun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_Cyclecount_TB_Akun" Association="Self.FK_TB_Cyclecount_TB_Akun">
+            <End Role="TB_Akun" EntitySet="TB_Akun" />
+            <End Role="TB_Cyclecount" EntitySet="TB_Cyclecount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_Inventory_TB_Akun" Association="Self.FK_TB_Inventory_TB_Akun">
+            <End Role="TB_Akun" EntitySet="TB_Akun" />
+            <End Role="TB_Inventory" EntitySet="TB_Inventory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CyclecountsystemModelStoreContainer" CdmEntityContainer="CyclecountsystemEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CyclecountsystemModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Akun">
+            <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Akun">
+              <MappingFragment StoreEntitySet="TB_Akun">
+                <ScalarProperty Name="Id_akun" ColumnName="Id_akun" />
+                <ScalarProperty Name="windows_account" ColumnName="windows_account" />
+                <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Cyclecount">
+            <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Cyclecount">
+              <MappingFragment StoreEntitySet="TB_Cyclecount">
+                <ScalarProperty Name="Id_Cyclecount" ColumnName="Id_Cyclecount" />
+                <ScalarProperty Name="Id_Material" ColumnName="Id_Material" />
+                <ScalarProperty Name="Batch_no" ColumnName="Batch_no" />
+                <ScalarProperty Name="bin" ColumnName="bin" />
+                <ScalarProperty Name="Data_aktual" ColumnName="Data_aktual" />
+                <ScalarProperty Name="SelisihQty" ColumnName="SelisihQty" />
+                <ScalarProperty Name="Persentase" ColumnName="Persentase" />
+                <ScalarProperty Name="Date_count" ColumnName="Date_count" />
+                <ScalarProperty Name="Id_akun" ColumnName="Id_akun" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Email">
+            <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Email">
+              <MappingFragment StoreEntitySet="TB_Email">
+                <ScalarProperty Name="Id_email" ColumnName="Id_email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Inventory">
+            <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Inventory">
+              <MappingFragment StoreEntitySet="TB_Inventory">
+                <ScalarProperty Name="Id_Inventory" ColumnName="Id_Inventory" />
+                <ScalarProperty Name="Id_material" ColumnName="Id_material" />
+                <ScalarProperty Name="Mat_description" ColumnName="Mat_description" />
+                <ScalarProperty Name="Batch_number" ColumnName="Batch_number" />
+                <ScalarProperty Name="Bin" ColumnName="Bin" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Calculate" ColumnName="Calculate" />
+                <ScalarProperty Name="Id_akun" ColumnName="Id_akun" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Role">
+            <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Role">
+              <MappingFragment StoreEntitySet="TB_Role">
+                <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

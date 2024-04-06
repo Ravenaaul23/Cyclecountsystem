@@ -1,0 +1,358 @@
+﻿@model CycleCountSystem__CSS_.Models.CombineViewModel
+
+@{
+    Layout = "";
+    ViewBag.Title = "Index Calculation";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CCI System - Index Calculation</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Theme/css/sb-admin-2.css" rel="stylesheet" />
+
+    <!-- Custom styles for this page -->
+    <link href="~/Theme/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        @Html.Action("Sidebar", "Home")
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                 aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                               placeholder="Search for..." aria-label="Search"
+                                               aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@User.Identity.Name</span>
+                                <img class="img-profile rounded-circle"
+                                     src="~/Theme/img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Display Calculation</h1>
+                    </div>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div>
+                                <a class="btn btn-primary" href="@Url.Action("Dashboard", "Home", new { @class = "btn btn-primary"  })">
+                                    Create New Calculate
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Melihat hasil persentase terakhir -->
+                        <div class="alert alert-info">
+                            @if (Model != null && Model.LastCalculationId != null)
+                            {
+                                <p>
+                                    Pada Tanggal <span style="background-color: yellow; color: black;">@Model.DateCount.ToString("dd/MM/yyyy HH:mm:ss")</span> cycle count dilakukan dengan Id Material = <span style="background-color: yellow; color: black;">@Model.LastCalculationId </span>
+                                    dengan  Batch Number = <span style="background-color: yellow; color: black;">@Model.LastCalculationBatch</span> dan    BIN = <span style="background-color: yellow; color: black;">@Model.LastCalculationBin</span>, berikut hasilnya:
+                                </p>
+
+                                <p>
+                                    Persentase akurasi kalkulasi sebesar = <span style="background-color: yellow; color: black;">@Model.LastCalculationPercent%</span>
+
+                                </p>
+
+                                <p>
+                                    Data Sistem = <span style="background-color: yellow; color: black;">@(Model.LastCalculationInventoryQty)</span>
+                                </p>
+
+                                <p>
+                                    Data Aktual = <span style="background-color: yellow; color: black;">@Model.DataAktualString</span>
+                                </p>
+
+                                <p>
+                                    @{
+                                        decimal selisihQtyValue = 0m;
+                                        decimal qty;
+                                        decimal.TryParse(Model.SelisihQty, out qty);
+                                        selisihQtyValue = qty;
+                                        string selisihQtyAsString = string.Format("{0:0.00}", Math.Abs(selisihQtyValue));
+
+
+                                        if (selisihQtyValue > 0)
+                                        {
+                                        <p>Data aktual lebih banyak dari sistem sebanyak: <span style="background-color: yellow; color: black;">@selisihQtyAsString</span></p>
+                                    }
+                                    else if (selisihQtyValue < 0)
+                                    {
+                                        <p>Data aktual kurang dari sistem sebanyak: <span style="background-color: yellow; color: black;">@selisihQtyAsString</span></p>
+                                    }
+                                    else
+                                    {
+                                        <p>Data aktual sama dengan sistem</p>
+                                    }
+                                    }
+                                    </p>
+                                }
+
+                                else
+                                {
+                                    <p>Tidak ada data kalkulasi terakhir yang tersedia.</p>
+                                }
+
+                            <p>
+                                @{
+                                    decimal lastCalculationValue = 0m;
+                                    decimal.TryParse(Model.LastCalculationPercent, out lastCalculationValue);
+                                }
+
+                                @if (lastCalculationValue == 100.00m)
+                                {
+                                    <span class="btn btn-success float-right">Success</span>
+                                }
+                                else
+                                {
+                                    <span class="btn btn-danger float-right">False</span>
+                                }
+                            </p>
+
+                        </div>
+
+                        <!--CODE TABEL-->
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Presentase Cycle Count</h6>
+                            <!-- Form untuk memilih rentang tanggal -->
+                            <form id="dateRangeForm" class="float-right">
+                                <label for="startDate">Start Date:</label>
+                                <input type="date" id="startDate" name="startDate">
+                                <label for="endDate">End Date:</label>
+                                <input type="date" id="endDate" name="endDate">
+                                <div>
+                                    <button type="button" class="btn float-right" onclick="downloadPDF()" id="button" disabled>
+                                        <i class="fas fa-fw fa-download"></i>
+                                        <span class="ml-0-2">Download PDF Report</span>
+                                    </button>
+
+                                    <script>
+
+                                    function CheckDate() {
+                                        var startDate = document.getElementById("startDate").value;
+                                        var endDate = document.getElementById("endDate").value;
+                                        var button = document.getElementById("button");
+
+                                        if (startDate && endDate) {
+                                            button.className = "btn btn-primary float-right";
+                                            button.disabled = false;
+                                        } else {
+                                            button.className = "btn float-right";
+                                            button.disabled = true;
+                                        }
+                                    }
+
+                                    document.getElementById("startDate").addEventListener("change", CheckDate);
+                                    document.getElementById("endDate").addEventListener("change", CheckDate);
+
+                                    window.onload = CheckDate;
+
+                                    function downloadPDF() {
+                                        var startDate = document.getElementById("startDate").value;
+                                        var endDate = document.getElementById("endDate").value;
+
+                                        var url = '@Url.Action("DownloadPDF", "Cyclecount")' + '?startDate=' + startDate + '&endDate=' + endDate;
+
+                                        window.location.href = url;
+                                    }
+                                    </script>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead style="background-color: #84B6A7">
+                                        <tr style="color:aliceblue">
+                                            <th>NO</th>
+                                            <th>Date Count</th>
+                                            <th>Id Material</th>
+                                            <th>Batch_number</th>
+                                            <th>Bin</th>
+                                            <th>ITR</th>
+                                            <th>Data Sistem</th>
+                                            <th>Data Aktual</th>
+                                            <th>Persentase</th>
+                                            <th>Selisih QTY</th>
+                                            <th>Result</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot style="background-color: #84B6A7">
+                                        <tr style="color:aliceblue">
+                                            <th>NO</th>
+                                            <th>Date Count</th>
+                                            <th>Id Material</th>
+                                            <th>Batch_number</th>
+                                            <th>Bin</th>
+                                            <th>ITR</th>
+                                            <th>Data Sistem</th>
+                                            <th>Data Aktual</th>
+                                            <th>Persentase</th>
+                                            <th>Selisih QTY</th>
+                                            <th>Result</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @{
+                                            int counter = 1; // Inisialisasi counter untuk nomor urutan
+                                        }
+
+                                        @foreach (var item in Model.CycleCounts.Reverse())
+                                        {
+                                            var inventoryItem = Model.Inventories.FirstOrDefault(inv =>
+                                                inv.Id_material == item.Id_Material &&
+                                                inv.Batch_number == item.Batch_no &&
+                                                inv.Bin == item.bin);
+
+                                            <tr>
+                                                <td>
+                                                    @counter
+                                                </td>
+                                                <td>@item.Date_count</td>
+                                                <td>@item.Id_Material</td>
+                                                <td>@item.Batch_no</td>
+                                                <td>@item.bin</td>
+                                                <td>@(inventoryItem != null ? inventoryItem.ITR.ToString() : "N/A")</td>
+                                                <td>@(inventoryItem != null ? inventoryItem.Qty.ToString() : "N/A")</td>
+                                                <td>@item.Data_aktual</td>
+                                                <td>@item.Persentase%</td>
+                                                <td>@item.SelisihQty</td>
+                                                <td class="text-center">
+                                                    @{
+                                                        decimal persentase = 0m;
+                                                        decimal.TryParse(item.Persentase, out persentase);
+                                                    }
+
+                                                    @if (persentase == 100.00m)
+                                                    {
+                                                        <button class="btn btn-success">Benar</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button class="btn btn-danger">Salah</button>
+                                                    }
+
+                                                </td>
+                                            </tr>
+
+                                            counter++; // Increment counter setiap kali iterasi
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Logistics Department 2023</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="~/Theme/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="~/Theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="~/Theme/js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="~/Theme/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/Theme/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="~/Theme/js/demo/datatables-demo.js"></script>
+    </div>
+</body>
+
+</html>

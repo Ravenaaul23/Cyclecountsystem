@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CyclecountsystemModelStoreContainer" CdmEntityContainer="CyclecountsystemEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Akun">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Akun">
+        <MappingFragment StoreEntitySet="TB_Akun">
+          <ScalarProperty Name="Id_akun" ColumnName="Id_akun" />
+          <ScalarProperty Name="windows_account" ColumnName="windows_account" />
+          <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Cyclecount">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Cyclecount">
+        <MappingFragment StoreEntitySet="TB_Cyclecount">
+          <ScalarProperty Name="Id_Cyclecount" ColumnName="Id_Cyclecount" />
+          <ScalarProperty Name="Id_Material" ColumnName="Id_Material" />
+          <ScalarProperty Name="Batch_no" ColumnName="Batch_no" />
+          <ScalarProperty Name="bin" ColumnName="bin" />
+          <ScalarProperty Name="Data_aktual" ColumnName="Data_aktual" />
+          <ScalarProperty Name="SelisihQty" ColumnName="SelisihQty" />
+          <ScalarProperty Name="Persentase" ColumnName="Persentase" />
+          <ScalarProperty Name="Date_count" ColumnName="Date_count" />
+          <ScalarProperty Name="Id_akun" ColumnName="Id_akun" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Email">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Email">
+        <MappingFragment StoreEntitySet="TB_Email">
+          <ScalarProperty Name="Id_email" ColumnName="Id_email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Inventory">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Inventory">
+        <MappingFragment StoreEntitySet="TB_Inventory">
+          <ScalarProperty Name="Id_Inventory" ColumnName="Id_Inventory" />
+          <ScalarProperty Name="Id_material" ColumnName="Id_material" />
+          <ScalarProperty Name="Mat_description" ColumnName="Mat_description" />
+          <ScalarProperty Name="Batch_number" ColumnName="Batch_number" />
+          <ScalarProperty Name="Bin" ColumnName="Bin" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ITR" ColumnName="ITR" />
+          <ScalarProperty Name="Calculate" ColumnName="Calculate" />
+          <ScalarProperty Name="Id_akun" ColumnName="Id_akun" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Role">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Role">
+        <MappingFragment StoreEntitySet="TB_Role">
+          <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

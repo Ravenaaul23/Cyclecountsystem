@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CyclecountsystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TB_Alarm">
+    <Key>
+      <PropertyRef Name="Id_alarm" />
+    </Key>
+    <Property Name="Id_alarm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Categories" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TB_Cyclecount">
+    <Key>
+      <PropertyRef Name="Id_Cyclecount" />
+    </Key>
+    <Property Name="Id_Cyclecount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Material" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Batch_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="bin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Data_aktual" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SelisihQty" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Persentase" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date_count" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TB_Email">
+    <Key>
+      <PropertyRef Name="Id_email" />
+    </Key>
+    <Property Name="Id_email" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TB_Inventory">
+    <Key>
+      <PropertyRef Name="Id_Inventory" />
+    </Key>
+    <Property Name="Id_Inventory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_material" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Mat_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Batch_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Bin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Qty" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ITR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Calculate" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="TB_Role">
+    <Key>
+      <PropertyRef Name="Id_role" />
+    </Key>
+    <Property Name="Id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="windows_account" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TB_User">
+    <Key>
+      <PropertyRef Name="Id_user" />
+    </Key>
+    <Property Name="Id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Windows_account" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="CyclecountsystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TB_Alarm" EntityType="Self.TB_Alarm" />
+    <EntitySet Name="TB_Cyclecount" EntityType="Self.TB_Cyclecount" />
+    <EntitySet Name="TB_Email" EntityType="Self.TB_Email" />
+    <EntitySet Name="TB_Inventory" EntityType="Self.TB_Inventory" />
+    <EntitySet Name="TB_Role" EntityType="Self.TB_Role" />
+    <EntitySet Name="TB_User" EntityType="Self.TB_User" />
+  </EntityContainer>
+</Schema>

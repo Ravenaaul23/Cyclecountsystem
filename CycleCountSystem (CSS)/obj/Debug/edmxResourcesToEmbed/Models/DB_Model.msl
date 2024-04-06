@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CyclecountsystemModelStoreContainer" CdmEntityContainer="CyclecountsystemEntities">
+    <EntitySetMapping Name="TB_Alarm">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Alarm">
+        <MappingFragment StoreEntitySet="TB_Alarm">
+          <ScalarProperty Name="Id_alarm" ColumnName="Id_alarm" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Categories" ColumnName="Categories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Cyclecount">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Cyclecount">
+        <MappingFragment StoreEntitySet="TB_Cyclecount">
+          <ScalarProperty Name="Id_Cyclecount" ColumnName="Id_Cyclecount" />
+          <ScalarProperty Name="Data_aktual" ColumnName="Data_aktual" />
+          <ScalarProperty Name="Persentase" ColumnName="Persentase" />
+          <ScalarProperty Name="Id_Material" ColumnName="Id_Material" />
+          <ScalarProperty Name="SelisihQty" ColumnName="SelisihQty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Email">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Email">
+        <MappingFragment StoreEntitySet="TB_Email">
+          <ScalarProperty Name="Id_email" ColumnName="Id_email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Pick_list" ColumnName="Pick_list" />
+          <ScalarProperty Name="Pick_file" ColumnName="Pick_file" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Inventory">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Inventory">
+        <MappingFragment StoreEntitySet="TB_Inventory">
+          <ScalarProperty Name="Id_Inventory" ColumnName="Id_Inventory" />
+          <ScalarProperty Name="Id_material" ColumnName="Id_material" />
+          <ScalarProperty Name="Mat_description" ColumnName="Mat_description" />
+          <ScalarProperty Name="Batch_number" ColumnName="Batch_number" />
+          <ScalarProperty Name="Bin" ColumnName="Bin" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ITR" ColumnName="ITR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Role">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Role">
+        <MappingFragment StoreEntitySet="TB_Role">
+          <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+          <ScalarProperty Name="windows_account" ColumnName="windows_account" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_User">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_User">
+        <MappingFragment StoreEntitySet="TB_User">
+          <ScalarProperty Name="Id_user" ColumnName="Id_user" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Windows_account" ColumnName="Windows_account" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Verify">
+      <EntityTypeMapping TypeName="CyclecountsystemModel.TB_Verify">
+        <MappingFragment StoreEntitySet="TB_Verify">
+          <ScalarProperty Name="Id_verify" ColumnName="Id_verify" />
+          <ScalarProperty Name="Id_Mat" ColumnName="Id_Mat" />
+          <ScalarProperty Name="Batch_No" ColumnName="Batch_No" />
+          <ScalarProperty Name="Bin" ColumnName="Bin" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Pick_name" ColumnName="Pick_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

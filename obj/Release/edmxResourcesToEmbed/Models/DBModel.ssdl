@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CyclecountsystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TB_Alarm">
+    <Key>
+      <PropertyRef Name="Id_alarm" />
+    </Key>
+    <Property Name="Id_alarm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Categories" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TB_Cyclecount">
+    <Key>
+      <PropertyRef Name="Id_Cyclecount" />
+    </Key>
+    <Property Name="Id_Cyclecount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Material" Type="varchar(max)" />
+    <Property Name="Batch_no" Type="varchar(max)" />
+    <Property Name="bin" Type="varchar(max)" />
+    <Property Name="Data_aktual" Type="varchar(max)" />
+    <Property Name="SelisihQty" Type="varchar(max)" />
+    <Property Name="Persentase" Type="varchar(max)" />
+    <Property Name="Date_count" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TB_Email">
+    <Key>
+      <PropertyRef Name="Id_email" />
+    </Key>
+    <Property Name="Id_email" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TB_Inventory">
+    <Key>
+      <PropertyRef Name="Id_Inventory" />
+    </Key>
+    <Property Name="Id_Inventory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_material" Type="varchar(max)" />
+    <Property Name="Mat_description" Type="varchar(max)" />
+    <Property Name="Batch_number" Type="varchar(max)" />
+    <Property Name="Bin" Type="varchar(max)" />
+    <Property Name="Qty" Type="varchar(max)" />
+    <Property Name="ITR" Type="varchar(max)" />
+    <Property Name="Calculate" Type="bit" />
+  </EntityType>
+  <EntityType Name="TB_Role">
+    <Key>
+      <PropertyRef Name="Id_role" />
+    </Key>
+    <Property Name="Id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="windows_account" Type="varchar(max)" />
+    <Property Name="role" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TB_User">
+    <Key>
+      <PropertyRef Name="Id_user" />
+    </Key>
+    <Property Name="Id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="Windows_account" Type="varchar(max)" />
+  </EntityType>
+  <EntityContainer Name="CyclecountsystemModelStoreContainer">
+    <EntitySet Name="TB_Alarm" EntityType="Self.TB_Alarm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_Cyclecount" EntityType="Self.TB_Cyclecount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_Email" EntityType="Self.TB_Email" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_Inventory" EntityType="Self.TB_Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_Role" EntityType="Self.TB_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_User" EntityType="Self.TB_User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
